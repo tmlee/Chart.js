@@ -106,13 +106,13 @@
 				helpers.each(dataset.data,function(dataPoint,index){
 					//Add a new point for each piece of data, passing any required data to draw.
 					datasetObject.bars.push(new this.BarClass({
-						value : dataPoint,
+						value : dataPoint['value'] || dataPoint,
 						label : data.labels[index],
 						datasetLabel: dataset.label,
-						strokeColor : dataset.strokeColor,
-						fillColor : dataset.fillColor,
-						highlightFill : dataset.highlightFill || dataset.fillColor,
-						highlightStroke : dataset.highlightStroke || dataset.strokeColor
+						strokeColor : dataPoint['strokeColor'] || dataset.strokeColor,
+						fillColor : dataPoint['fillColor'] || dataset.fillColor,
+						highlightFill : dataPoint['highlightFill'] || dataset.highlightFill || dataset.fillColor,
+						highlightStroke : dataPoint['highlightStroke'] || dataset.highlightStroke || dataset.strokeColor
 					}));
 				},this);
 
